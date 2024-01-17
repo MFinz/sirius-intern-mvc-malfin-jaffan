@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> CRUD Mobil </title>
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"> 
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-primary">
+        <div class="container-fluid">
+          <a class="navbar-brand text-white" th:href="@{/}">CRUD Mobil</a>
+          
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="container-fluid"></div>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" th:href="@{/}">Mobil</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/sedan}">Sedan</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="#">Porsche</a>
+          </li>
+      </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div class="container">
+        <br>    
+        <h4> Tambah Mobil</h4>
+        <div>
+            <form th:object="${mobil}" method="post" th:action="@{/save}">
+                
+                <div class="form-group">
+                    <label>ID</label>
+                    <input type="text" class="form-control bg-light" th:field="*{id}">
+                </div>
+                <br>
+
+                <div class="form-group">
+                    <label>Merek</label>
+                    <input type="text" class="form-control bg-light" th:field="*{merek}">
+                </div>
+                <br>
+
+
+                <div class="form-group">
+                    <label>Model</label>
+                    <input type="text" class="form-control bg-light" th:field="*{model}">
+                </div>
+                <br>
+
+                <div class="form-group">
+                    <label>Tahun Produksi</label>
+                    <input type="number" class="form-control bg-light" th:field="*{tahun_produksi}">
+                </div>
+                <br>
+
+                <div class="form-group">
+                    <label>Warna</label>
+                    <input type="text" class="form-control bg-light" th:field="*{warna}">
+                </div>
+                <br>
+                
+
+                <div class="form-group">
+                    <label>Jumlah Pintu</label>
+                    <input type="number" class="form-control bg-light" th:field="*{jumlah_pintu}">
+                </div>
+                <br>
+
+                <div class="form-group">
+                    <label>Harga</label>
+                    <input type="number" class="form-control bg-light" th:field="*{harga}">
+                </div>
+                <br>
+
+                <p align="right">
+                    <a class="btn btn-dark" th:href="@{/}">Kembali</a>
+                    <button class="btn btn-primary" type="submit">Kirim</button>
+                </p>
+
+            </form>
+
+           
+        </div>
+      </div>
+
+    <script src="/webjars/bootstrap/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+</body>
+</html>
