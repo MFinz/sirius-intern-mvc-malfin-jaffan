@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> CRUD Mobil </title>
+    <title> CRUD Porsche </title>
     <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"> 
 </head>
 
@@ -11,7 +11,7 @@
     
     <nav class="navbar navbar-expand-lg bg-primary">
         <div class="container-fluid">
-          <a class="navbar-brand text-white" th:href="@{/}">CRUD Mobil</a>
+          <a class="navbar-brand text-white" th:href="@{/porsche}">CRUD Porsche</a>
           
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -22,7 +22,7 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" th:href="@{/}">Mobil</a>
+          <a class="nav-link" aria-current="page" th:href="@{/}">Mobil</a>
         </li>
 
         <li class="nav-item">
@@ -30,7 +30,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link"  th:href="@{/porsche}">Porsche</a>
+            <a class="nav-link active" th:href="@{/porsche}">Porsche</a>
           </li>
       </ul>
           </div>
@@ -39,35 +39,29 @@
 
       <div class="container">
         <br>
-            <a class="btn btn-outline-dark" th:href="@{/add}">Tambah</a>
+            <a class="btn btn-outline-dark" th:href="@{/porsche/add}">Tambah</a>
         <br>
         <br>
         <table class="table table-sm table-hover">
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Merek</th>
-                    <th>Model</th>
-                    <th>Tahun Produksi</th>
-                    <th>Warna</th>
-                    <th>Jumlah Pintu</th>
-                    <th>Harga</th>
+                    <th>ID Mobil</th>
+                    <th>Kecepatan Maksimal</th>
+                    <th>Tipe Mesin</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
                 
-                <tr th:each="mobil: ${mobils}">
-                    <td th:text="${mobil.id}"></td>
-                    <td th:text="${mobil.merek}"></td>
-                    <td th:text="${mobil.model}"></td>
-                    <td th:text="${mobil.tahun_produksi}"></td>
-                    <td th:text="${mobil.warna}"></td>
-                    <td th:text="${mobil.jumlah_pintu}"></td>
-                    <td th:text="${mobil.harga}"></td>
+                <tr th:each="porsche: ${porsches}">
+                    <td th:text="${porsche.id}"></td>
+                    <td th:text="${porsche.id_mobil}"></td>
+                    <td th:text="${porsche.kecepatan_maksimal}"></td>
+                    <td th:text="${porsche.tipe_mesin}"></td>
                     <td>
-                        <a class="btn btn-primary" th:href="@{'/edit/'+${mobil.id}}">Edit</a>
-                        <a class="btn btn-danger"  th:href="@{'/delete/'+${mobil.id}}">Hapus</a>
+                        <a class="btn btn-primary" th:href="@{'/porsche/edit/'+${porsche.id}}">Edit</a>
+                        <a class="btn btn-danger"  th:href="@{'/porsche/delete/'+${porsche.id}}">Hapus</a>
                     </td>
                 </tr>
             </tbody>

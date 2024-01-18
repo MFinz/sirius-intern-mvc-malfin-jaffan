@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> CRUD Sedan </title>
+    <title> CRUD Porsche </title>
     <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"> 
 </head>
 
@@ -11,7 +11,7 @@
     
     <nav class="navbar navbar-expand-lg bg-primary">
         <div class="container-fluid">
-          <a class="navbar-brand text-white" th:href="@{/sedan}">CRUD Sedan</a>
+          <a class="navbar-brand text-white" th:href="@{/porsche}">CRUD Porsche</a>
           
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -26,11 +26,11 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link active" th:href="@{/sedan}">Sedan</a>
+          <a class="nav-link" th:href="@{/sedan}">Sedan</a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link"  th:href="@{/porsche}">Porsche</a>
+            <a class="nav-link active" th:href="@{/porsche}">Porsche</a>
           </li>
       </ul>
           </div>
@@ -39,16 +39,12 @@
 
       <div class="container">
         <br>    
-        <h4> Tambah Sedan</h4>
+        <h4> Edit Porsche</h4>
         <div>
-            <form th:object="${sedan}" method="post" th:action="@{/sedan/update}">
+            <form th:object="${porsche}" method="post" th:action="@{/porsche/update}">
                 
-                <div class="form-group">
-                    <label>ID</label>
-                    <input type="text" class="form-control bg-light" th:field="*{id}">
-                </div>
-                <br>
-
+                <input type="hidden" class="form-control bg-light" th:field="*{id}">
+                
                 <div class="form-group">
                     <label>Pilih Mobil</label>
                     <select class="form-control bg-light" th:field="*{id_mobil}">
@@ -59,19 +55,19 @@
 
 
                 <div class="form-group">
-                    <label>Jumlah Penumpang</label>
-                    <input type="number" class="form-control bg-light" th:field="*{jumlah_penumpang}">
+                    <label>Kecepatan Maksimal</label>
+                    <input type="number" class="form-control bg-light" th:field="*{kecepatan_maksimal}">
                 </div>
                 <br>
 
                 <div class="form-group">
-                    <label>Fitur Tambahan</label>
-                    <input type="text" class="form-control bg-light" th:field="*{fitur_tambahan}">
+                    <label>Tipe Mesin</label>
+                    <input type="text" class="form-control bg-light" th:field="*{tipe_mesin}">
                 </div>
                 <br>
 
                 <p align="right">
-                    <a class="btn btn-dark" th:href="@{/sedan}">Kembali</a>
+                    <a class="btn btn-dark" th:href="@{/porsche}">Kembali</a>
                     <button class="btn btn-primary" type="submit">Kirim</button>
                 </p>
 
