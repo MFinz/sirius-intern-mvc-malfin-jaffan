@@ -45,9 +45,24 @@ public class Mobil {
     @OneToMany(mappedBy = "mobil", cascade = CascadeType.ALL)
     private List<Porsche> porsches;
 
-        public int getId()
+        public void setSedans(List<Sedan> sedans) 
         {
-            return this.id;
+            this.sedans = sedans;
+        }
+
+        public List<Sedan> getSedans() 
+        {
+            return sedans;
+        }
+
+        public void setPorsches(List<Porsche> porsches) 
+        {
+            this.porsches = porsches;
+        }
+
+        public List<Porsche> getPorsches() 
+        {
+            return porsches;
         }
 
         public void setId(int id)
@@ -55,19 +70,19 @@ public class Mobil {
             this.id = id;
         }
 
-        public String getMerek()
+        public int getId()
         {
-            return this.merek;
+            return this.id;
         }
 
         public void setMerek(String merek)
         {
             this.merek = merek;
         }
-
-        public String getModel()
+        
+        public String getMerek()
         {
-            return this.model;
+            return this.merek;
         }
 
         public void setModel(String model)
@@ -75,9 +90,9 @@ public class Mobil {
             this.model = model;
         }
 
-        public String getTahun_produksi()
+        public String getModel()
         {
-            return this.tahun_produksi;
+            return this.model;
         }
 
         public void setTahun_produksi(String tahun_produksi)
@@ -85,19 +100,19 @@ public class Mobil {
             this.tahun_produksi = tahun_produksi;
         }
 
-        public String getWarna()
+        public String getTahun_produksi()
         {
-            return this.warna;
+            return this.tahun_produksi;
         }
-
+        
         public void setWarna(String warna)
         {
             this.warna = warna;
         }
 
-        public char getJumlah_pintu()
+        public String getWarna()
         {
-            return this.jumlah_pintu;
+            return this.warna;
         }
 
         public void setJumlah_pintu(char jumlah_pintu)
@@ -105,9 +120,9 @@ public class Mobil {
             this.jumlah_pintu = jumlah_pintu;
         }
 
-        public BigInteger getHarga()
+        public char getJumlah_pintu()
         {
-            return this.harga;
+            return this.jumlah_pintu;
         }
 
         public void setHarga(BigInteger harga)
@@ -115,7 +130,11 @@ public class Mobil {
             this.harga = harga;
         }
 
-       
+        public BigInteger getHarga()
+        {
+            return this.harga;
+        }
+        
     }
 
 

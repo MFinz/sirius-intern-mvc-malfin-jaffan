@@ -26,19 +26,14 @@ public class Porsche {
     public Porsche(){
     }
 
-        public int getId()
-        {
-            return this.id;
-        }
-
         public void setId(int id)
         {
             this.id = id;
         }
 
-        public Mobil getMobil()
+        public int getId()
         {
-            return this.mobil;
+            return this.id;
         }
 
         public void setMobil(Mobil id_mobil)
@@ -46,9 +41,9 @@ public class Porsche {
             this.mobil = id_mobil;
         }
 
-        public int getKecepatan_maksimal()
+        public Mobil getMobil()
         {
-            return this.kecepatan_maksimal;
+            return this.mobil;
         }
 
         public void setKecepatan_maksimal(int kecepatan_maksimal)
@@ -56,13 +51,18 @@ public class Porsche {
             this.kecepatan_maksimal =kecepatan_maksimal;
         }
 
-        public String getTipe_mesin()
+        public int getKecepatan_maksimal()
         {
-            return this.tipe_mesin;
+            return this.kecepatan_maksimal;
         }
 
         public void setTipe_mesin(String tipe_mesin)
         {
             this.tipe_mesin = tipe_mesin;
+        }
+
+        public String getTipe_mesin()
+        {
+            return this.tipe_mesin;
         }
 }

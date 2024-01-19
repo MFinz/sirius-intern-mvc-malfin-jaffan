@@ -26,19 +26,14 @@ public class Sedan {
     public Sedan(){
     }
 
-        public int getId()
-        {
-            return this.id;
-        }
-
         public void setId(int id)
         {
             this.id = id;
         }
 
-        public Mobil getMobil()
+        public int getId()
         {
-            return this.mobil;
+            return this.id;
         }
 
         public void setMobil(Mobil mobil)
@@ -46,9 +41,9 @@ public class Sedan {
             this.mobil = mobil;
         }
 
-        public String getJumlah_penumpang()
+        public Mobil getMobil()
         {
-            return this.jumlah_penumpang;
+            return this.mobil;
         }
 
         public void setJumlah_penumpang(String jumlah_penumpang)
@@ -56,14 +51,19 @@ public class Sedan {
             this.jumlah_penumpang = jumlah_penumpang;
         }
 
-        public String getFitur_tambahan()
+        public String getJumlah_penumpang()
         {
-            return this.fitur_tambahan;
+            return this.jumlah_penumpang;
         }
 
         public void setFitur_tambahan(String fitur_tambahan)
         {
             this.fitur_tambahan = fitur_tambahan;
+        }
+
+        public String getFitur_tambahan()
+        {
+            return this.fitur_tambahan;
         }
 
     }
