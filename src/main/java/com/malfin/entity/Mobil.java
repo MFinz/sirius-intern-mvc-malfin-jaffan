@@ -25,7 +25,7 @@ public class Mobil {
     @Column(length=4, nullable = false)
     private String tahun_produksi;
 
-    @Column(length=25, nullable = false)
+    @Column(length=100, nullable = false)
     private String warna;
 
     @Column(length=1, nullable = false)
