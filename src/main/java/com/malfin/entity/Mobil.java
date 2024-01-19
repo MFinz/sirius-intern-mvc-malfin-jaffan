@@ -1,10 +1,13 @@
 package com.malfin.entity;
 
 import java.math.BigInteger;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -31,8 +34,16 @@ public class Mobil {
     @Column(length=10, nullable = false)
     private BigInteger harga;
 
+   
+
     public Mobil(){
     }
+
+    @OneToMany(mappedBy = "mobil", cascade = CascadeType.ALL)
+    private List<Sedan> sedans;
+
+    @OneToMany(mappedBy = "mobil", cascade = CascadeType.ALL)
+    private List<Porsche> porsches;
 
         public int getId()
         {
@@ -103,6 +114,8 @@ public class Mobil {
         {
             this.harga = harga;
         }
+
+       
     }
 
 
