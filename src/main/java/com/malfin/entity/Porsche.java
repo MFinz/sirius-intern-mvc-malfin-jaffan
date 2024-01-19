@@ -3,6 +3,8 @@ package com.malfin.entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -11,8 +13,9 @@ public class Porsche {
      @Id 
     private int id;
 
-    @Column(length=25, nullable = false)
-    private int id_mobil;
+    @ManyToOne
+    @JoinColumn(name="id_mobil", nullable = false)
+    private Mobil mobil;
 
     @Column(length=3, nullable = false)
     private int kecepatan_maksimal;
@@ -33,14 +36,14 @@ public class Porsche {
             this.id = id;
         }
 
-        public int getId_mobil()
+        public Mobil getMobil()
         {
-            return this.id_mobil;
+            return this.mobil;
         }
 
-        public void setId_mobil(int id_mobil)
+        public void setMobil(Mobil id_mobil)
         {
-            this.id_mobil = id_mobil;
+            this.mobil = id_mobil;
         }
 
         public int getKecepatan_maksimal()

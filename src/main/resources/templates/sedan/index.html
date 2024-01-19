@@ -56,7 +56,7 @@
                 
                 <tr th:each="sedan: ${sedans}">
                     <td th:text="${sedan.id}"></td>
-                    <td th:text="${sedan.id_mobil}"></td>
+                    <td th:text="${sedan.mobil.id}"></td>
                     <td th:text="${sedan.jumlah_penumpang}"></td>
                     <td th:text="${sedan.fitur_tambahan}"></td>
                     <td>

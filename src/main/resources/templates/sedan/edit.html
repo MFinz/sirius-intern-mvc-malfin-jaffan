@@ -47,7 +47,7 @@
 
                 <div class="form-group">
                     <label>Pilih Mobil</label>
-                    <select class="form-control bg-light" th:field="*{id_mobil}">
+                    <select class="form-control bg-light" th:field="*{mobil.id}">
                         <option th:each="mobil: ${mobils}" th:value="${mobil.id}" th:text="${mobil.merek + '&nbsp' + '|' + '&nbsp' + mobil.model }"></option>
                     </select>
                 </div>
