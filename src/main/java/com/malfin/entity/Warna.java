@@ -19,8 +19,8 @@ public class Warna {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(length=100, nullable = false)
-    private String warna;
+    @Column(name="nama_warna", length=100, nullable = false)
+    private String nama_warna;
 
     public Warna(){
     }
@@ -46,14 +46,14 @@ public class Warna {
             this.id = id;
         }
     
-        public String getWarna() 
+        public String getNama_warna() 
         {
-            return warna;
+            return nama_warna;
         }
     
-        public void setWarna(String warna) 
+        public void setNama_warna(String nama_warna) 
         {
-            this.warna = warna;
+            this.nama_warna = nama_warna;
         }
         
     }
