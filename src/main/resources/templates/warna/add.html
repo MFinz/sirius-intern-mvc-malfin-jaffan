@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> CRUD Porsche </title>
+    <title> CRUD Detail Mobil </title>
     <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"> 
     <link href="/webjars/bootstrap-icons/1.11.2/font/bootstrap-icons.css" rel="stylesheet">
 </head>
@@ -12,7 +12,7 @@
     
     <nav class="navbar navbar-expand-lg bg-primary">
         <div class="container-fluid">
-          <a class="navbar-brand text-white" th:href="@{/porsche}">CRUD Porsche</a>
+          <a class="navbar-brand text-white" th:href="@{/warna}">CRUD Warna</a>
           
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -22,7 +22,7 @@
         <div class="container-fluid"></div>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" aria-current="page" th:href="@{/}">Mobil</a>
         </li>
 
@@ -32,7 +32,8 @@
 
         <li class="nav-item">
             <a class="nav-link active" th:href="@{/porsche}">Porsche</a>
-          </li>
+          </li> -->
+
       </ul>
           </div>
         </div>
@@ -40,41 +41,30 @@
 
       <div class="container">
         <br>    
-        <h4> Edit Porsche</h4>
+        <h4> Tambah Warna</h4>
         <div>
-            <form th:object="${porsche}" method="post" th:action="@{/porsche/update}">
-                
+            <form th:object="${warna}" method="post" th:action="@{/warna/save}">
+                <!-- <div class="form-group">
+                    <label>ID</label>
+                    <input type="hidden" class="form-control bg-light" th:field="*{id}">
+                </div>
+                <br> -->
+
                 <input type="hidden" class="form-control bg-light" th:field="*{id}">
-                
-                <div class="form-group">
-                    <label>Pilih Mobil</label>
-                    <select class="form-control bg-light" th:field="*{mobil.id}">
-                        <option th:each="mobil: ${mobils}" th:value="${mobil.id}" th:text="${mobil.merek + '&nbsp' + mobil.model + '&nbsp' + mobil.tahun_produksi }"></option>
-                    </select>
-                </div>
-                <br>
-
 
                 <div class="form-group">
-                    <label>Kecepatan Maksimal</label>
-                    <input type="number" class="form-control bg-light" th:field="*{kecepatan_maksimal}">
-                </div>
-                <br>
-
-                <div class="form-group">
-                    <label>Tipe Mesin</label>
-                    <input type="text" class="form-control bg-light" th:field="*{tipe_mesin}">
+                    <label>Warna</label>
+                    <input type="text" class="form-control bg-light" th:field="*{nama_warna}">
                 </div>
                 <br>
 
                 <p align="right">
-                    <a class="btn btn-dark" th:href="@{/porsche}">Kembali</a>
+                    <a class="btn btn-dark" th:href="@{/warna}">Kembali</a>
                     <button class="btn btn-primary" type="submit">Kirim</button>
                 </p>
 
             </form>
 
-           
         </div>
       </div>
 

@@ -40,8 +40,9 @@
 
         <div class="container">
             <br>
-            <h3 th:text="${mobil.merek} + '&nbsp'+ ${mobil.model} + '&nbsp'+ ${mobil.tahun_produksi}"></h3>
+            <h3 th:text="'Detail' + '&nbsp'+  ${mobil.merek} + '&nbsp'+ ${mobil.model} + '&nbsp'+ ${mobil.tahun_produksi}"></h3>
 
+            <th:block th:if="${not #lists.isEmpty(detailMobils)}">
             <table class="table table-hover">
                 <thead>
                     <tr class="table-dark">
@@ -52,13 +53,20 @@
                 <tbody>
                     <tr th:each="detailMobil, iterStat : ${detailMobils}">
                         <td th:text="${iterStat.count}"></td>
-                        <td th:text="${detailMobil.warna.warna}"></td>
+                        <td th:text="${detailMobil.warna.nama_warna}"></td>
                     </tr>
                 </tbody>
             </table>
-            <ul>
+            </th:block>
             
-            </ul>
+            <!-- Menampilkan keterangan bahwa data tidak ada. -->
+            <th:block th:if="${#lists.isEmpty(detailMobils)}">
+                <p class="alert alert-danger">Tidak ada data detail mobil.</p>
+            </th:block>
+
+            <p align="right">
+                <a class="btn btn-dark" th:href="@{/}">Kembali</a>
+            </p>
         </div>
 
         <script src="/webjars/bootstrap/js/bootstrap.bundle.min.js" type="text/javascript"></script>

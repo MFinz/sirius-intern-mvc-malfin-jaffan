@@ -35,7 +35,7 @@ public class WarnaService {
         return repo.findById(id);
     }
 
-    public void updateSedan(Warna warna)
+    public void updateWarna(Warna warna)
     {
         repo.save(warna);
     }
