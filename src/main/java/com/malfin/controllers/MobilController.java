@@ -1,5 +1,8 @@
 package com.malfin.controllers;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.malfin.entity.DetailMobil;
 import com.malfin.entity.Mobil;
 import com.malfin.service.DetailMobilService;
 import com.malfin.service.MobilService;
@@ -32,6 +36,18 @@ public class MobilController {
         model.addAttribute("detailmobils", detailmobil.findAll());
         return "mobil/index";
     }
+
+    @GetMapping("/{id}")
+    public String showDetailMobil(@PathVariable Integer id, Model model) {
+        Optional<Mobil> mobil = mobilService.findById(id);
+        List<DetailMobil> detailMobils = detailmobil.findByMobilId(id);
+
+        model.addAttribute("mobil", mobil.orElse(new Mobil())); // gunakan orElse untuk menghindari NPE
+        model.addAttribute("detailMobils", detailMobils);
+
+        return "mobil/detail"; // hanya mengembalikan bagian yang diinginkan dari HTML
+    }
+
 
     @GetMapping("/add")
     public String add(Model model) {

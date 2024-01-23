@@ -1,9 +1,9 @@
 package com.malfin.repo;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.malfin.entity.Warna;
 
-public interface WarnaRepo extends CrudRepository<Warna, Integer>{
+public interface WarnaRepo extends JpaRepository<Warna, Integer>{
 
 }
