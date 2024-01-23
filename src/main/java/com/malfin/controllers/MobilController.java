@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.malfin.entity.Mobil;
+import com.malfin.service.DetailMobilService;
 import com.malfin.service.MobilService;
 
 
@@ -20,11 +21,15 @@ public class MobilController {
     @Autowired
     private MobilService mobilService;
 
+    @Autowired
+    private DetailMobilService detailmobil;
+
     @GetMapping
     public String Welcome(Model model)
     {
         // Melakukan sesuatu 
         model.addAttribute("mobils",mobilService.findAll()); 
+        model.addAttribute("detailmobils", detailmobil.findAll());
         return "mobil/index";
     }
 

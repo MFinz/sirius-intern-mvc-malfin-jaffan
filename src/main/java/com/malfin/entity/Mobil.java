@@ -25,16 +25,11 @@ public class Mobil {
     @Column(length=4, nullable = false)
     private String tahun_produksi;
 
-    @Column(length=100, nullable = false)
-    private String warna;
-
     @Column(length=1, nullable = false)
     private char jumlah_pintu;
 
     @Column(length=10, nullable = false)
     private BigInteger harga;
-
-   
 
     public Mobil(){
     }
@@ -44,6 +39,17 @@ public class Mobil {
 
     @OneToMany(mappedBy = "mobil", cascade = CascadeType.ALL)
     private List<Porsche> porsches;
+
+    @OneToMany(mappedBy = "mobil", cascade = CascadeType.ALL)
+    private List<DetailMobil> detailmobils;
+
+        public List<DetailMobil> getDetailmobils() {
+            return detailmobils;
+        }
+
+        public void setDetailmobils(List<DetailMobil> detailmobils) {
+            this.detailmobils = detailmobils;
+        }
 
         public void setSedans(List<Sedan> sedans) 
         {
@@ -104,17 +110,7 @@ public class Mobil {
         {
             return this.tahun_produksi;
         }
-        
-        public void setWarna(String warna)
-        {
-            this.warna = warna;
-        }
-
-        public String getWarna()
-        {
-            return this.warna;
-        }
-
+    
         public void setJumlah_pintu(char jumlah_pintu)
         {
             this.jumlah_pintu = jumlah_pintu;
