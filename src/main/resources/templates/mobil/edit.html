@@ -79,8 +79,10 @@
                 <div class="form-group">
                   <label>Warna</label>
                   <div th:each="detailMobil: ${mobilAdapter.detailmobils}" class="d-flex mb-2">
-                      <input type="text" class="form-control bg-light me-2" th:value="${detailMobil.warna.nama_warna}">
-                      <a class="btn btn-danger" th:if="${detailMobil.id != null}" th:href="@{'/detailmobil/hapus/'+${detailMobil.id}}">
+                    <select class="form-control bg-light me-2" th:id="'warna-' + ${detailMobil.id}">
+                      <option th:each="warna: ${warnas}" th:value="${warna.id}" th:text="${warna.nama_warna}" th:selected="${detailMobil.warna.id eq warna.id}" id="warna"></option>
+                    </select>
+                      <a class="btn btn-danger" th:if="${detailMobil.id != null}" th:href="@{'/detailmobil/delete/'+${detailMobil.id}}" th:onclick="'return confirm(\'Apakah Anda ingin menghapus data ini?\');'">
                           <i class="bi bi-trash-fill"></i>
                       </a>
                   </div>

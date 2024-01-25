@@ -83,10 +83,11 @@ public class MobilController {
     {
         Optional<Mobil> mobil = mobilService.findById(id);
         List<DetailMobil> detailMobils = detailmobil.findByMobilId(id);
-    
         MobilAdapter mobilAdapter = new MobilAdapter(mobil.orElse(new Mobil()), detailMobils);
         model.addAttribute("mobilAdapter", mobilAdapter);
 
+        model.addAttribute("warnas",warnaService.findAll()); 
+        model.addAttribute("detailmobil",DetailMobilService.findById(id));
         DetailMobilService.deleteById(id);
 
         return "mobil/edit";
