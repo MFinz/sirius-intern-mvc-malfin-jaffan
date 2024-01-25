@@ -79,6 +79,21 @@
                 </div>
                 <br>
 
+                <div class="form-group">
+                  <label>Pilih Warna</label>
+                  <div class="d-flex">
+                  <select class="form-control bg-light me-2">
+                      <option th:each="warna: ${warnas}" th:value="${warna.id}" th:text="${warna.nama_warna}" id="warna"></option>
+                  </select>
+                  <button type="button" class="btn btn-primary" onclick="tambahFormWarna()"><i class="bi bi-plus-circle-fill"></i></button>
+                  </div>
+                    </div>
+                </div>
+                <br>
+              </div>
+              <br>
+              <div id="warnaContainer"></div>
+
                 <p align="right">
                     <a class="btn btn-dark" th:href="@{/}">Kembali</a>
                     <button class="btn btn-primary" type="submit">Kirim</button>
@@ -90,5 +105,60 @@
       </div>
 
     <script src="/webjars/bootstrap/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+    <!-- <script>
+      function tambahFormWarna() {
+          // Wadah
+          var container = document.getElementById("warnaContainer");
+  
+          var inputDiv = document.createElement('div');
+          inputDiv.className = 'd-flex mb-2 pb-3';
+  
+          // Form Input
+          var newSelect = document.createElement('select');
+          newSelect.className = 'form-control bg-light me-2';
+          newSelect.name = 'warna'; // Sesuaikan dengan nama atribut warna
+  
+          // Tambahkan opsi dari data warnas
+          warnas.forEach(function(warna) {
+              var option = document.createElement('option');
+              option.value = warna.id;
+              option.text = warna.nama_warna;
+              newSelect.appendChild(option);
+          });
+  
+          inputDiv.appendChild(newSelect);
+  
+          var newButton = document.createElement('button');
+          newButton.type = 'button';
+          newButton.className = "btn btn-primary me-2";
+          newButton.innerHTML = "<i class='bi bi-plus-circle-fill'></i>";
+          newButton.onclick = function () {
+              tambahFormWarna();
+          };
+  
+          var deleteButton = document.createElement('button');
+          deleteButton.type = 'button';
+          deleteButton.className = "btn btn-danger";
+          deleteButton.innerHTML = "<i class='bi bi-trash-fill'></i>";
+          deleteButton.onclick = function () {
+              container.removeChild(inputDiv);
+              updateIndex();
+          }
+  
+          inputDiv.appendChild(newButton);
+          inputDiv.appendChild(deleteButton);
+          container.appendChild(inputDiv);
+  
+          function updateIndex() {
+              var container = document.getElementById("warnaContainer");
+              var selects = container.querySelectorAll('select[name="warna"]');
+  
+              // Menata ulang indeks elemen-elemen select
+              selects.forEach(function (select, index) {
+                  select.name = 'warna' + (index + 1);
+              });
+          }
+      }
+  </script> -->
 </body>
 </html>
