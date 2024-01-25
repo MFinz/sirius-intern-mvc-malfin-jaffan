@@ -7,23 +7,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.malfin.entity.DetailMobil;
 import com.malfin.entity.Mobil;
+import com.malfin.entity.MobilAdapter;
 import com.malfin.service.DetailMobilService;
 import com.malfin.service.MobilService;
+import com.malfin.service.WarnaService;
 
 
 @Controller
 @RequestMapping("")
 
 public class MobilController {
+
+    @Autowired
+    private DetailMobilService DetailMobilService;
     
     @Autowired
     private MobilService mobilService;
+
+    @Autowired
+    private WarnaService warnaService;
 
     @Autowired
     private DetailMobilService detailmobil;
@@ -52,11 +61,12 @@ public class MobilController {
     @GetMapping("/add")
     public String add(Model model) {
         model.addAttribute("mobil",new Mobil());
+        model.addAttribute("warnas",warnaService.findAll()); 
         return "mobil/add";
     }
 
     @PostMapping("/save")
-    public String save(Mobil mobil, Model model) {
+    public String save(Mobil mobil) {
         mobilService.addMobil(mobil);
         return "redirect:/"; // Jadi kembali ke halaman awal
     }
@@ -71,15 +81,23 @@ public class MobilController {
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable("id") int id, Model model)
     {
-        model.addAttribute("mobil",mobilService.findById(id));
+        Optional<Mobil> mobil = mobilService.findById(id);
+        List<DetailMobil> detailMobils = detailmobil.findByMobilId(id);
+    
+        MobilAdapter mobilAdapter = new MobilAdapter(mobil.orElse(new Mobil()), detailMobils);
+        model.addAttribute("mobilAdapter", mobilAdapter);
+
+        DetailMobilService.deleteById(id);
+
         return "mobil/edit";
     }
 
     @PostMapping("/update")
-    public String update(Mobil mobil, Model model) {
-      mobilService.updateMobil(mobil);
-        return "redirect:/"; // Jadi kembali ke halaman awal
-    }
+    public String update(@ModelAttribute("mobilAdapter") MobilAdapter mobilAdapter, Model model) {
+        Mobil mobil = mobilAdapter.getMobil();
+        mobilService.updateMobil(mobil);
+    return "redirect:/";
+}
     
 }
 

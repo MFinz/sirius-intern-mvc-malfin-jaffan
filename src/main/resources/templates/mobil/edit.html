@@ -41,7 +41,7 @@
         <br>    
         <h4> Edit Mobil</h4>
         <div>
-            <form th:object="${mobil}" method="post" th:action="@{/update}">
+            <form th:object="${mobilAdapter.mobil}" method="post" th:action="@{/update}">
                 
                 <input type="hidden" th:field="*{id}"/>
 
@@ -75,6 +75,16 @@
                     <input type="number" class="form-control bg-light" th:field="*{harga}" maxlength="10">
                 </div>
                 <br>
+
+                <div class="form-group">
+                  <label>Warna</label>
+                  <div th:each="detailMobil: ${mobilAdapter.detailmobils}" class="d-flex mb-2">
+                      <input type="text" class="form-control bg-light me-2" th:value="${detailMobil.warna.nama_warna}">
+                      <a class="btn btn-danger" th:if="${detailMobil.id != null}" th:href="@{'/detailmobil/hapus/'+${detailMobil.id}}">
+                          <i class="bi bi-trash-fill"></i>
+                      </a>
+                  </div>
+              </div>
 
                 <p align="right">
                     <a class="btn btn-dark" th:href="@{/}">Kembali</a>

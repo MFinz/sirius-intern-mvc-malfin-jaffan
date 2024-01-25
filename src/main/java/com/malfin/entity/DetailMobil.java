@@ -27,11 +27,11 @@ public class DetailMobil {
         @JoinColumn(name="id_warna", nullable = false)
         private Warna warna;
 
-        public int getId() {
+        public Integer getId() {
             return id;
         }
     
-        public void setId(int id) {
+        public void setId(Integer id) {
             this.id = id;
         }
     
