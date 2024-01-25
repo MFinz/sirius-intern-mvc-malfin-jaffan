@@ -1,5 +1,8 @@
 package com.malfin.controllers;
 
+
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -49,11 +52,25 @@ public class DetailMobilController {
     }
 
     @GetMapping("/delete/{id}")
-    public String delete(@PathVariable("id") int id)
+    public String delete(@PathVariable("id") int id) {
+    Optional<DetailMobil> optionalDetailMobil = DetailMobilService.findById(id);
+
+    if (optionalDetailMobil.isPresent()) 
     {
+        DetailMobil detailMobil = optionalDetailMobil.get();
+
+        int mobilId = detailMobil.getMobil().getId();
+
         DetailMobilService.deleteById(id);
-        return "redirect:/detailmobil";
+
+        return "redirect:/edit/" + mobilId;
+    } 
+    else 
+    {
+     
+        return "redirect:/error";
     }
+}
 
      @GetMapping("/edit/{id}")
     public String edit(@PathVariable("id") int id, Model model)
