@@ -21,7 +21,7 @@ import com.malfin.service.WarnaService;
 @RequestMapping("/detailmobil")
 public class DetailMobilController {
     @Autowired
-    private DetailMobilService DetailMobilService;
+    private DetailMobilService detailmobilService;
 
     @Autowired
     private MobilService mobilService;
@@ -33,7 +33,7 @@ public class DetailMobilController {
     public String Welcome(Model model)
     {
         // Melakukan sesuatu 
-        model.addAttribute("detailmobils",DetailMobilService.findAll()); 
+        model.addAttribute("detailmobils",detailmobilService.findAll()); 
         return "detailmobil/index";
     }
 
@@ -47,13 +47,13 @@ public class DetailMobilController {
 
     @PostMapping("/save")
     public String save(DetailMobil detailmobil, Model model) {
-        DetailMobilService.addDetailMobil(detailmobil);
+        detailmobilService.addDetailMobil(detailmobil);
         return "redirect:/detailmobil"; // Jadi kembali ke halaman awal
     }
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") int id) {
-    Optional<DetailMobil> optionalDetailMobil = DetailMobilService.findById(id);
+    Optional<DetailMobil> optionalDetailMobil = detailmobilService.findById(id);
 
     if (optionalDetailMobil.isPresent()) 
     {
@@ -61,7 +61,7 @@ public class DetailMobilController {
 
         int mobilId = detailMobil.getMobil().getId();
 
-        DetailMobilService.deleteById(id);
+        detailmobilService.deleteById(id);
 
         return "redirect:/edit/" + mobilId;
     } 
@@ -75,7 +75,7 @@ public class DetailMobilController {
      @GetMapping("/edit/{id}")
     public String edit(@PathVariable("id") int id, Model model)
     {
-        model.addAttribute("detailmobil",DetailMobilService.findById(id));
+        model.addAttribute("detailmobil",detailmobilService.findById(id));
         model.addAttribute("mobils",mobilService.findAll()); 
         model.addAttribute("warnas",warnaService.findAll()); 
         return "detailmobil/edit";
@@ -83,7 +83,7 @@ public class DetailMobilController {
 
     @PostMapping("/update")
     public String update(DetailMobil detailmobil, Model model) {
-        DetailMobilService.updateDetailMobil(detailmobil);
+        detailmobilService.updateDetailMobil(detailmobil);
         return "redirect:/detailmobil"; // Jadi kembali ke halaman awal
     }    
 }
