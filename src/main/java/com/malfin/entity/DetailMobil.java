@@ -39,16 +39,16 @@ public class DetailMobil {
             return mobil;
         }
     
-        public void setMobil(Mobil id_mobil) {
-            this.mobil = id_mobil;
+        public void setMobil(Mobil mobil) {
+            this.mobil = mobil;
         }
     
         public Warna getWarna() {
             return warna;
         }
     
-        public void setWarna(Warna id_warna) {
-            this.warna = id_warna;
+        public void setWarna(Warna Warna) {
+            this.warna = Warna;
         }
     }
 

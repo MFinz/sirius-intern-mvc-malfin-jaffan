@@ -82,9 +82,9 @@
                 <div class="form-group">
                   <label>Pilih Warna</label>
                   <div class="d-flex">
-                  <select class="form-control bg-light me-2">
-                      <option th:each="warna: ${warnas}" th:value="${warna.id}" th:text="${warna.nama_warna}" id="warna"></option>
-                  </select>
+                    <select class="form-control bg-light me-2" th:field="${detailmobil.warna}">
+                        <option th:each="warna: ${warnas}" th:value="${warna.id}" th:text="${warna.nama_warna}"></option>
+                    </select>
                   <button type="button" class="btn btn-primary" onclick="tambahFormWarna()"><i class="bi bi-plus-circle-fill"></i></button>
                   </div>
                     </div>

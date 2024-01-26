@@ -26,7 +26,7 @@ import com.malfin.service.WarnaService;
 public class MobilController {
 
     @Autowired
-    private DetailMobilService DetailMobilService;
+    private DetailMobilService detailmobilService;
     
     @Autowired
     private MobilService mobilService;
@@ -34,22 +34,18 @@ public class MobilController {
     @Autowired
     private WarnaService warnaService;
 
-    @Autowired
-    private DetailMobilService detailmobil;
-
     @GetMapping
     public String Welcome(Model model)
     {
         // Melakukan sesuatu 
         model.addAttribute("mobils",mobilService.findAll()); 
-        model.addAttribute("detailmobils", detailmobil.findAll());
         return "mobil/index";
     }
 
     @GetMapping("/{id}")
     public String showDetailMobil(@PathVariable Integer id, Model model) {
         Optional<Mobil> mobil = mobilService.findById(id);
-        List<DetailMobil> detailMobils = detailmobil.findByMobilId(id);
+        List<DetailMobil> detailMobils = detailmobilService.findByMobilId(id);
 
         model.addAttribute("mobil", mobil.orElse(new Mobil())); // gunakan orElse untuk menghindari NPE
         model.addAttribute("detailMobils", detailMobils);
@@ -62,12 +58,15 @@ public class MobilController {
     public String add(Model model) {
         model.addAttribute("mobil",new Mobil());
         model.addAttribute("warnas",warnaService.findAll()); 
+        model.addAttribute("detailmobil", new DetailMobil());
         return "mobil/add";
     }
 
     @PostMapping("/save")
-    public String save(Mobil mobil) {
+    public String save(Mobil mobil, DetailMobil detailmobil) {
         mobilService.addMobil(mobil);
+        detailmobil.setMobil(mobil);
+        detailmobilService.addDetailMobil(detailmobil);
         return "redirect:/"; // Jadi kembali ke halaman awal
     }
 
@@ -82,13 +81,13 @@ public class MobilController {
     public String edit(@PathVariable("id") int id, Model model)
     {
         Optional<Mobil> mobil = mobilService.findById(id);
-        List<DetailMobil> detailMobils = detailmobil.findByMobilId(id);
+        List<DetailMobil> detailMobils = detailmobilService.findByMobilId(id);
         MobilAdapter mobilAdapter = new MobilAdapter(mobil.orElse(new Mobil()), detailMobils);
         model.addAttribute("mobilAdapter", mobilAdapter);
 
         model.addAttribute("warnas",warnaService.findAll()); 
-        model.addAttribute("detailmobil",DetailMobilService.findById(id));
-        DetailMobilService.deleteById(id);
+        model.addAttribute("detailmobil",detailmobilService.findById(id));
+        detailmobilService.deleteById(id);
 
         return "mobil/edit";
     }
